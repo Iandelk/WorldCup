@@ -1,0 +1,142 @@
+﻿<Window x:Class="WPF_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_App"
+        xmlns:p ="clr-namespace:WPF_App.Properties"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        FontFamily="Kristen ITC"
+        mc:Ignorable="d" Tag="MainWindow" 
+      Title="Field Preview" Loaded="Window_Loaded" Closing="Window_Closing" Height="815" Width="1300">
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="background" StartPoint="0,0.5" EndPoint="1,0.5">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="ForestGreen" />
+                <GradientStop Offset="0" Color="LightBlue" />
+                <GradientStop Offset="1" Color="ForestGreen" />
+
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <EventTrigger x:Key="BackgroundAnimation" RoutedEvent="StackPanel.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="1" Storyboard.TargetProperty="Background.GradientStops[1].Offset" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="00:00:03"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid Name="allcomponents" >
+      
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="1.2*" />
+            <RowDefinition Height="13.5*" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Grid.Column="0" Background="White">
+            <Menu FontFamily="Kristen ITC" Name="menu" DockPanel.Dock="Top"  Background="White">
+                <MenuItem Name="Options" Header="{x:Static p:Resources.Options}"  Background="White">
+                    <MenuItem Name="newTeam" Header="{x:Static p:Resources.ChooseAnewTeam}" Click="newTeam_Click"/>
+                    <MenuItem Name="changeLanguage" Header="{x:Static p:Resources.ChangeLanguage}" >
+                        <MenuItem Name="CroatianMenuItem" IsCheckable="True" Header="{x:Static p:Resources.Croatian}" Click="CroatianMenuItem_Click" />
+                        <MenuItem Name="EnglishMenuItem" IsCheckable="True" Header="{x:Static p:Resources.English}" Click="EnglishMenuItem_Click" />
+                    </MenuItem>
+                    <MenuItem Name="changeWindowSize" Header="{x:Static p:Resources.WindowSize}" >
+                        <MenuItem Name="WindowedMenuItem" IsCheckable="True" Header="{x:Static p:Resources.Windowed}" Click="WindowedMenuItem_Click" />
+                        <MenuItem Name="FullscreenMenuItem" IsCheckable="True" Header="{x:Static p:Resources.Maximized}" Click="FullscreenMenuItem_Click" />
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            
+        </DockPanel>
+        <Grid Name="gridStats" Grid.Row="1" Grid.Column="0" TextElement.FontSize="15" TextElement.FontWeight="DemiBold" Background="{StaticResource ResourceKey=background}">
+
+            <Grid.Triggers>
+                <StaticResourceExtension ResourceKey="BackgroundAnimation" />
+            </Grid.Triggers>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+            <Label Name="lblGamesPlayed_Home"></Label>
+                <Label  Name="lblGamesWon_Home"></Label>
+                <Label  Name="lblGamesLost_Home" ></Label>
+                <Label  Name="lblGamesDrawn_Home"></Label>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center"  Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+                <Label  Name="lblGoalsScored_Home"></Label>
+                <Label  Name="lblGoalsReceived_Home"></Label>
+                <Label  Name="lblGoalsDifferential_Home"></Label>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
+                <Label Name="lblGamesPlayed_Away" ></Label>
+                <Label Name="lblGamesWon_Away" ></Label>
+                <Label Name="lblGamesLost_Away" ></Label>
+                <Label Name="lblGamesDrawn_Away" ></Label>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center"  Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
+                <Label Name="lblGoalsScored_Away"></Label>
+                <Label Name="lblGoalsReceived_Away" ></Label>
+                <Label Name="lblGoalsDifferential_Away"></Label>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                <Label FontWeight="ExtraBold" Name="lblVS"></Label>
+            </StackPanel>
+        
+        </Grid>
+        <Grid Name="gridField" Grid.Row="2" Grid.Column="0">
+            <Grid.Background >
+                <ImageBrush  ImageSource="footballField.png" AlignmentY="Top" AlignmentX="Center"/>
+            </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+    </Grid>
+    </Grid>
+</Window>

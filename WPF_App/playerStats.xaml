@@ -1,0 +1,76 @@
+﻿<Window x:Class="WPF_App.playerStats"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_App"
+        xmlns:p ="clr-namespace:WPF_App.Properties"
+        ResizeMode="NoResize"
+        mc:Ignorable="d" Tag="playerStats" MouseRightButtonDown="Window_MouseRightButtonDown"
+        Title="playerStats" Height="194" Width="500"
+         WindowStyle="None"
+        BorderThickness="5"
+        BorderBrush="LightBlue"
+        Background="Transparent"
+        FontFamily="Kristen ITC"
+        WindowStartupLocation="Manual">
+
+    <Window.Resources>
+        <RadialGradientBrush x:Key="background" GradientOrigin="0.5,0.5">
+            <RadialGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="LightBlue" />
+                <GradientStop Offset="1.6" Color="ForestGreen" />
+
+
+            </RadialGradientBrush.GradientStops>
+        </RadialGradientBrush>
+
+        <EventTrigger x:Key="BackgroundAnimation" RoutedEvent="StackPanel.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="1" Storyboard.TargetProperty="Background.GradientStops[1].Offset" Duration="0:0:2" AutoReverse="True" RepeatBehavior="Forever" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Resources>
+
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Width" From="0" To="500" Duration="00:00:.30"/>
+
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="{StaticResource ResourceKey=background}">
+
+        <Grid.Triggers>
+            <StaticResourceExtension ResourceKey="BackgroundAnimation" />
+        </Grid.Triggers>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Image Name="imagePortrait" Height="233" VerticalAlignment="Top"  Source="C:\Users\Phyrexian\source\repos\WorldCup_Projekt\WPF_App\PlayerNoImage.png">
+            </Image>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Label Name="lblName" Content="lblName" FontWeight="Bold" Height="33" FontSize="18"></Label>
+            <Label  Name="lblShirtNumber" FontSize="18" FontWeight="Bold"  Height="30" Content="lblShirtNumber"></Label>
+            <Label  Name="lblPosition" FontSize="18" FontWeight="Bold"  Height="30" Content="lblPosition"></Label>
+            <Label  Name="lblcaptain" FontSize="18" FontWeight="Bold"  Height="33" Content="{x:Static p:Resources.Captain}"></Label>
+            <Label  Name="lblGoalsScored" FontSize="18" FontWeight="Bold"  Height="30" Content="lblGoalsScored"></Label>
+            <Label  Name="lblYellowCards" FontSize="18" FontWeight="Bold"  Height="30" Content="lblYellowCards"></Label>
+        </StackPanel>
+    </Grid>
+</Window>

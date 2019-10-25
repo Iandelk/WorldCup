@@ -1,0 +1,47 @@
+﻿<Window x:Class="WPF_App.CountrySelect"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_App"
+        WindowStartupLocation="CenterScreen"
+        xmlns:p ="clr-namespace:WPF_App.Properties"
+        mc:Ignorable="d"
+        Tag="CultureSelect"
+        FontFamily="Kristen ITC"
+        Title="{x:Static p:Resources.SelectCountries}" Height="400" Width="400" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="background" StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="ForestGreen" />
+                <GradientStop Offset="0" Color="LightBlue" />
+                <GradientStop Offset="1" Color="ForestGreen" />
+
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <EventTrigger x:Key="BackgroundAnimation" RoutedEvent="StackPanel.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="1" Storyboard.TargetProperty="Background.GradientStops[1].Offset" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Resources>
+
+    <StackPanel Margin="2" Background="{StaticResource ResourceKey=background}" >
+        <StackPanel.Triggers>
+            <StaticResourceExtension ResourceKey="BackgroundAnimation" />
+        </StackPanel.Triggers>
+        <Label Content="{x:Static p:Resources.ChooseHomeCountry}" FontSize="16" FontWeight="Bold" Margin="0,30,0,0" HorizontalAlignment="Center"></Label>
+        <ComboBox FontWeight="Bold" Name="cb_HomeCountry" Width="200" Margin="0,20,0,0" SelectionChanged="cb_HomeCountry_SelectionChanged" IsEditable="True" IsReadOnly="True">
+            </ComboBox>
+        <Label Content="{x:Static p:Resources.ChooseAwayCountry}" FontSize="16" FontWeight="Bold" Margin="0,30,0,0" HorizontalAlignment="Center"></Label>
+        <ComboBox FontWeight="Bold" Name="cb_AwayCountry" Width="200"  Margin="0,20,0,0"  IsEditable="True" IsReadOnly="True" >
+            </ComboBox>
+        <Button FontWeight="Bold" Background="White" Width="100" Height="50" Content="{x:Static p:Resources.btnAccept}"  Margin="0,50,0,0" Click="Button_Click"></Button>
+        </StackPanel>
+</Window>
