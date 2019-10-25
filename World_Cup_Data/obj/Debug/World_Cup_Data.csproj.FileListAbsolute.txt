@@ -1,0 +1,13 @@
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\World_Cup_Data.dll.config
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\World_Cup_Data.dll
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\World_Cup_Data.pdb
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\obj\Debug\World_Cup_Data.csprojResolveAssemblyReference.cache
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\obj\Debug\World_Cup_Data.csproj.CoreCompileInputs.cache
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\obj\Debug\World_Cup_Data.csproj.CopyComplete
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\obj\Debug\World_Cup_Data.dll
+C:\Users\Phyrexian\source\repos\WorldCup_Projekt\World_Cup_Data\obj\Debug\World_Cup_Data.pdb
